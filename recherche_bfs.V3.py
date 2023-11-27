@@ -56,6 +56,7 @@ def premier_voisin(voisins:list, sommet_visite:list)->int:
             return visite
     return None # aucun voisin visité n'a été trouvé parmi les voisins
 
+'''
 if __name__ == "__main__":
     # Création du labyrinthe de test
     aretes = [(0, 1), (0, 4), (1, 0), (1, 5), (2, 6), (3, 7), (4, 0), (4, 5), (5, 1) , \
@@ -73,3 +74,4 @@ if __name__ == "__main__":
     #afficher_labyrinthe(Labyrinthe, colonnes, lignes)
     chemin_bfs =chercher_bfs(Labyrinthe)
     print(chemin_bfs)
+'''
