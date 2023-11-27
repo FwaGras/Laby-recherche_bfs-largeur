@@ -31,7 +31,6 @@ def chercher_bfs(laby:nx.Graph, source:int = None, destination:int = None)->list
             if voisin not in sommet_visite and not f.present(voisin):
                 f.ajoute(voisin)
 
-    file_voisins = File()
     sommet_courant = sommet_visite[-1]
     itinéraire_inverse = []
     # On reste dans la boucle tant que l'on a pas rejoint le sommet de début
@@ -40,7 +39,7 @@ def chercher_bfs(laby:nx.Graph, source:int = None, destination:int = None)->list
         print("débug sommet courant:",sommet_courant)
         # Je cherche maintenant le premier sommet de sommet_courant qui apparaît parmis les voisins
         # Cette fonction n'existe pas encore, on s'en occupe après
-        prochain_sommet = premier_voisin(voisins, sommet_visite, file_voisins)
+        prochain_sommet = premier_voisin(voisins, sommet_visite)
         arete = (sommet_courant, prochain_sommet)
         itinéraire_inverse.append(arete)
         # Il ne reste plus qu'à désigner le nouveau sommet courant
@@ -55,15 +54,15 @@ def chercher_bfs(laby:nx.Graph, source:int = None, destination:int = None)->list
     return itinéraire.reverse()
 
 
-def premier_voisin(voisins:list, sommet_visite:list, file_voisins: File)->int:
+def premier_voisin(voisins:list, sommet_visite:list)->int:
     '''
     prend en paramètres la liste des voisins d’un sommet et la liste des sommets visités
     et qui renvoie parmi la liste des voisins visités, le premier sommet de la liste voisin.
     '''
-    toto = None
+    
     for visite in sommet_visite:
-        #print(visite)
+        print("débug visite:",visite)
+        print("débug som_vis:",sommet_visite)
         if visite in voisins:
-            file_voisins.ajoute(visite)
             return visite
     return None # aucun voisin visité n'a été trouvé parmi les voisins
